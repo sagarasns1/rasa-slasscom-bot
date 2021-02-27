@@ -1,0 +1,146 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - buy_ticket
+  - out_of_scope
+  - inform
+
+entities:
+- number_of_tickets
+- email
+- phone-number
+- PERSON
+
+slots:
+  PERSON:
+    type: any
+    influence_conversation: false
+  phone-number:
+    type: any
+    influence_conversation: false
+  is_buy_tickets:
+    type: bool
+    influence_conversation: false
+  is_slasscom_member:
+    type: bool
+    influence_conversation: false
+  number_of_tickets:
+    type: any
+    influence_conversation: false
+  amount-of-money:
+    type: any
+    influence_conversation: false
+  currency:
+    type: any
+    influence_conversation: false
+    initial_value: "Rs."
+
+responses:
+  utter_greet:
+  - text: "Ayubowan. Welcome to the Slasscom AI Asia Summit 2021. How can I help you?"
+    image: "https://i.imgur.com/Nx79grt.png?1"
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_confirm_buy_tickets:
+  - text: "Do you want to reserve tickets to Slasscom AI Asia Summit 2021?"
+    buttons:
+      - title: "Yes"
+        payload: "/affirm"
+      - title: "No"
+        payload: "/deny"
+  utter_ask_is_slasscom_member:
+  - text: "Are you a member of Slasscom?"
+    buttons:
+      - title: "Yes"
+        payload: "/affirm"
+      - title: "No"
+        payload: "/deny" 
+  utter_ask_how_many_tickets:
+  - text: How manu tickets do you need?
+  utter_ask_PERSON:
+  - text: Can you please tell me your name?
+  - text: What is your name?
+  - text: Please enter your name and mobile number
+  utter_ask_phone-number:
+  - text: Can you  tell me your mobile number?
+  - text: What is your mobile number?
+  utter_ask_number_of_tickets:
+  - text: "How many tickets do you need?"
+  utter_confirm_info:
+  - text: Is this information correct?
+    buttons:
+      - title: "Yes"
+        payload: "/affirm"
+      - title: "No"
+        payload: "/deny"
+  utter_ask_to_continue_payment:
+  - text: Do you want to confirm your order?
+    buttons:
+      - title: "Yes"
+        payload: "/affirm"
+      - title: "No"
+        payload: "/deny"
+  utter_did_that_help:
+  - text: "Did that help you?"
+    buttons:
+    - title: "Yes"
+      payload: "/affirm"
+    - title: "No"
+      payload: "/deny"
+  utter_happy:
+  - text: "Great, carry on!"
+  utter_goodbye:
+  - text: "Bye"
+  utter_iamabot:
+  - text: "Cancelling your request. I am a bot, powered by Rasa."
+  utter_continue_payment:
+  - text: "Forwarding to payment channels. Thank you and we look forward to see you in the event."
+    image: "https://imgur.com/AEtUNiU"
+  utter_user_details:
+    - text: "Please check the given details \nName: {Name},\nMobile Number: {Mobile_number},\nNumber of Tickets Required: {TKT_CNT}\nTotal price for tickets: {TKT_PRICE}"
+  utter_price_details: 
+    - text: "Total price for tickets: {TKT_PRICE}"      
+  utter_out_of_scope:
+    - text: Sorry, I didn't get what you said. Please rephrase what you said.
+  utter_ask_continue:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No, cancel the reservation
+    text: Would you like to continue to money transfer?
+  
+actions:
+  - action_submit
+  - action_get_price
+  - action_chat_restart
+forms:
+  registration_form:
+    PERSON:
+      - type: from_entity
+        entity: PERSON
+    phone-number:
+      - type: from_entity
+        entity: phone-number
+    number_of_tickets:
+      - type: from_entity
+        entity: number_of_tickets
+    is_slasscom_member:
+      - intent: affirm
+        type: from_intent
+        value: True
+      - intent: deny
+        type: from_intent
+        value: False
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
