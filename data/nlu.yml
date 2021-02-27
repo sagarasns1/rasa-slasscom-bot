@@ -1,0 +1,161 @@
+version: "2.0"
+nlu:
+- intent: affirm
+  examples: |
+    - indeed
+    - correct
+    - that sounds good
+    - yes
+    - yess please
+    - of course
+    - yup
+    - yeah
+    - yes please
+    - yes plz
+    - Sure
+    - Ok
+    - sweet
+    - cool,
+    - yes...
+    - y
+- intent: deny
+  examples: |
+    - not really
+    - no
+    - I don't think so
+    - never
+    - no way
+    - nope
+    - no thanks
+    - I dunno
+    - Nothing!
+    - nevermind
+    - n
+- intent: goodbye
+  examples: |
+    - see you later
+    - goodbye
+    - i'm done
+    - quit
+    - stop
+    - bye
+    - Adios
+    - BYEE
+    - GOODBYE
+    - Thanks a lot. See ya later
+    - have a good day. time to go, bye
+    - bye bye
+    - ok i gtg
+- intent: greet
+  examples: |
+    - good morning
+    - hi
+    - hey there
+    - hey
+    - good evening
+    - hello
+    - Hello?
+    - HEY
+    - hello are you still there
+    - hallo
+    - HI
+    - Hey
+    - Hi
+    - hi!
+    - hello there
+    - hi there
+    - Hello
+    - hello its ella
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: out_of_scope
+  examples: |
+    - what is the square root of 5
+    - I want to know the weather
+    - what is the meaning of life.
+    - Fridge Isn't Running
+    - my tv isn't working
+    - I want a pizza
+    - my washing machine isn't working
+    - what year is it
+    - order a pizza
+    - I want to order a pizza
+    - what is the weather today
+    - what is the weather
+- intent: buy_ticket
+  examples: |
+    - I wanna buy a ticket
+    - I need to buy tickets
+    - I need to buy a pass to Slasscom AI Asia Summit 2021 please
+    - I'm looking for a ticket
+    - a pass
+    - pass
+    - tkts
+    - tickets
+    - I want [2](number_of_tickets) tickets
+    - can i get [5](number_of_tickets) passes to the summit
+- regex: phone-number
+  examples: |
+    - \+?\d{7,11}
+- regex: number_of_tickets
+  examples: |
+    - \d{1,3}
+- intent: inform
+  examples: |
+    - my phone number is [1234567891](phone-number)
+    - This is my phone number [1234567891](phone-number)
+    - I'm [Sagara Sumathipala](PERSON)
+    - My name is [Akila Dananjaya](PERSON)
+    - [Sagara Sumathipala](PERSON)
+    - [Sagara Sumathipala](PERSON) [0776935825](phone-number)
+    - [+94 77 693 5825](phone-number)
+    - [Sumudu](PERSON)
+    - [3](number_of_tickets)
+    - [5](number_of_tickets) tkts
+    - I want [25](number_of_tickets) passes
+- synonym: ticket
+  examples: |
+    - tickets
+    - pass
+    - passes
+    - tkt
+- synonym: phone
+  examples: |
+    - mobile
+    - telephone
